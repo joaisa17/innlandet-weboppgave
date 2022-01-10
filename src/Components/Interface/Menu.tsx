@@ -14,7 +14,7 @@ const Menu : FC<Props> = props => {
         onClose={() => props.setVisible(false)}
     >
         <div className="menu">
-            <h4 style={{margin: '20px'}}>HELLO dnilea</h4>
+            <h4 className="title">Meny</h4>
         </div>
     </Drawer>
 }

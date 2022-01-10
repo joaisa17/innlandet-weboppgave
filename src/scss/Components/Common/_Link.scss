@@ -1,0 +1,15 @@
+.link {
+    width: fit-content !important;
+    
+    &.light { color: $link-color-light; }
+    &.dark { color: $link-color-dark; }
+
+    text-decoration: none;
+
+    &:hover {
+        &.light { color: darken($link-color-light, 20); }
+        &.dark { color: darken($link-color-dark, 20); }
+
+        text-decoration: underline;
+    }
+}

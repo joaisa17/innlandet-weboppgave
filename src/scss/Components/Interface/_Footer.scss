@@ -1,0 +1,41 @@
+#footer {
+    width: 100%;
+
+    max-width: 100%;
+    min-height: $footer-height;
+
+    color: white;
+    background-color: darken($primary-color, 10);
+
+    padding: 16px 50px;
+
+    >.title {
+        font-weight: 500;
+
+        margin-bottom: 24px;
+    }
+
+    .categories {
+        width: fit-content;
+        max-width: 100%;
+
+        overflow-x: hidden;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        column-gap: 80px;
+
+        >.category {
+            width: fit-content !important;
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+        .categories {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto;
+
+            row-gap: 40px;
+        }
+    }
+}

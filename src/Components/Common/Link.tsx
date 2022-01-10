@@ -7,25 +7,33 @@ interface Props {
     to : string;
     className? : string;
     content? : string;
+    dark? : boolean;
 }
 
 function linkIsExternal(link : string) {
-    return link.match(/^http(s?):\/\/[\S]*$/)?.length
+    return [
+        Boolean(link.match(/^(http(s?):\/\/)|mailto:[\S]+$/)),
+        Boolean(link.match(/^mailto:[\S]+$/))
+    ]
 }
 
-const Link : FC<Props> = ({to, className, content, children}) => (linkIsExternal(to)
-    && <a
-        className={CombineClasses('external-link', className)}
-        children={content || children}
-        href={to}
+const Link : FC<Props> = props => {
+    const [external, emailPrompt] = linkIsExternal(props.to);
 
-        target="_blank"
+    const defaultClass = `link ${props.dark ? 'dark' : 'light'}`;
+
+    return (external && <a
+        className={CombineClasses(`${defaultClass} external-link`, CombineClasses(props.className, emailPrompt && 'e-mail'))}
+        children={props.children || props.content}
+        href={props.to}
+
+        target={(emailPrompt && "_parent") || "_blank"}
         rel="noopener noreferrer"
-    />)
-    || <RouterLink
-        className={CombineClasses('internal-link', className)}
-        children={content || children}
-        to={to}
+    />) || <RouterLink
+        className={CombineClasses(`${defaultClass} internal-link`, props.className)}
+        children={props.children || props.content}
+        to={props.to}
     />
+}
 
 export default Link;

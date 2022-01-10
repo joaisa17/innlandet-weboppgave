@@ -1,4 +1,12 @@
 .menu {
-    color: limegreen;
-    background-color: lime;
+    width: 200px;
+    margin: 10px 20px;
+    
+    .title {
+        text-align: center;
+    }
+
+    @media screen and (max-width: 800px) {
+        width: 100vw;
+    }
 }

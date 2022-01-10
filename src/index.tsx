@@ -5,6 +5,8 @@ import DefaultHead from '@Components/Essential/DefaultHead';
 
 import '@scss/_main.scss';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 render(
     <div id="react-app">
         <DefaultHead />
