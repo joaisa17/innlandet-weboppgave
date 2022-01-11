@@ -1,5 +1,7 @@
 import { FC, Fragment, useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
+
+import CombineClasses from '@CommonTS/CombineClasses';
 import Capitalize from '@CommonTS/Capitalize';
 
 import Header from '@Components/Interface/Header';
@@ -8,6 +10,9 @@ import Menu from '@Components/Interface/Menu';
 
 interface Props {
     title : string;
+
+    className? : string;
+    pageClass? : string;
 
     hideHeader? : boolean;
     hideFooter? : boolean;
@@ -33,7 +38,7 @@ const Page : FC<Props> = (props) => {
         {!props.hideHeader && <Header setMenuVisible={setMenuVisible} menuVisible={menuVisible} />}
         {!props.disableMenu && <Menu setVisible={setMenuVisible} visible={menuVisible} />}
 
-        <div className="content" children={props.children} />
+        <div className={CombineClasses('content', CombineClasses(props.className, props.pageClass && 'page-' + props.pageClass))} children={props.children} />
 
         {!props.hideFooter && <Footer />}
     </Fragment>

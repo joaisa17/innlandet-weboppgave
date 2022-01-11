@@ -4,11 +4,11 @@ import CombineClasses from '@CommonTS/CombineClasses';
 import GetErrorMessage from '@ts/Functions/GetErrorMessage';
 
 interface Props {
-    code? : number;
+    code? : string;
 }
 
 const Error : FC<Props> = props => <Page title={CombineClasses("error", props.code)}>
-    Error: {GetErrorMessage(parseInt(window.location.pathname.split("/").pop() as string))}
+    Error: {GetErrorMessage(parseInt(props.code || window.location.pathname.split("/").pop() as string))}
 </Page>
 
 export default Error;

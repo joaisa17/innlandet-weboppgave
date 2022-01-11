@@ -1,0 +1,16 @@
+.page-home {
+    margin-top: 40px;
+    
+    .top {
+        display: flex;
+        flex-wrap: wrap;
+
+        justify-content: center;
+        align-items: center;
+
+        .intro {
+            padding: 0 40px;
+            width: 600px;
+        }
+    }
+}

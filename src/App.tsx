@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Routes as ReactRoutes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes as ReactRoutes, Route } from 'react-router-dom';
 
 import Routes from '@Views/index';
 import Error from '@Views/Error';
@@ -19,8 +19,7 @@ export default function App() {
             })}
 
             {/* Redirect to the 404 page if no page was rendered */}
-            <Route path="/error/*" element={<Error />} />
-            <Route path="*" element={<Navigate to="/error/404" />} />
+            <Route path="*" element={<Error code="404" />} />
             
         </ReactRoutes>
     </BrowserRouter>
