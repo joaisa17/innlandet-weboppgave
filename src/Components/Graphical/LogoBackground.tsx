@@ -12,16 +12,16 @@ interface Props {
 
 const size = {
     width: 300,
-    height: 500
+    height: 510
 };
 
 const scene = new THREE.Scene();
 
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.25);
+const ambientLight = new THREE.AmbientLight(0xffffff, 2.5);
 scene.add(ambientLight)
 
 const camera = new THREE.PerspectiveCamera(
-    55,
+    58,
     size.width / size.height,
     0.1,
     1000

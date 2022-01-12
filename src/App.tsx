@@ -1,22 +1,19 @@
 import { BrowserRouter, Routes as ReactRoutes, Route } from 'react-router-dom';
+import ProtectedComponent from '@Components/Essential/Protected';
 
-import Routes from '@Views/index';
+import * as Pages from '@Views/index';
 import Error from '@Views/Error';
 
 export default function App() {
     return <BrowserRouter>
         <ReactRoutes>
 
-            {/* Create a Route component for each Route in Routes */}
-            {Routes.map((route, i) => {
-                const Element = route.element;
+            <Route path="/" element={<Pages.Home />} />
+            <Route path="/om-oss" element={<Pages.About />} />
+            <Route path="/kontakt-oss" element={<Pages.Contact />} />
 
-                return <Route
-                    key={i}
-                    path={route.path}
-                    element={<Element />}
-                />
-            })}
+            <Route path="/account/login" element={<Pages.Login />} />
+            <Route path="/account/manage" element={<ProtectedComponent><Pages.ManageAccount /></ProtectedComponent>} />
 
             {/* Redirect to the 404 page if no page was rendered */}
             <Route path="*" element={<Error code="404" />} />

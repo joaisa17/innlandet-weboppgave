@@ -17,21 +17,14 @@ const Footer : FC<Props> = props => <div id={CombineClasses("footer", props.hidd
     <div className="categories">
         <Category title="lenker">
             <Link to="/">Hjem</Link>
-            <Link to="/about">Om Oss</Link>
-            <Link to="/contact">Kontakt Oss</Link>
+            <Link to="/om-oss">Om Oss</Link>
+            <Link to="/kontakt-oss">Kontakt Oss</Link>
             <Link to="https://innlandetfylke.no/">Offisiell hjemmeside</Link>
         </Category>
 
-        <Category title="kontakt oss 2">
-            <Link to="mailto:test">E-Post</Link>
-            <Link to="/">Hjem test</Link>
-            <Link dark to="https://youtube.com/ignwombat">Youtube</Link>
-        </Category>
-
-        <Category title="kontakt oss 3">
-            <Link to="mailto:test">E-Post</Link>
-            <Link to="/">Hjem test</Link>
-            <Link dark to="https://youtube.com/ignwombat">Youtube</Link>
+        <Category title="kontakt">
+            <Link to="mailto:joaisa17@innlandetfylke.no">E-Post</Link>
+            <Link to="/">Lokasjon på google maps</Link>
         </Category>
     </div>
 </div>

@@ -1,17 +1,16 @@
-import Route from '@ts/Classes/Route';
-
 // Import all views
 import Home from './Home';
+import About from './About';
+import Contact from './Contact';
 
-/*
-    Add your routes below.
-    For non exact routes, use:
+import Login from './Login';
+import ManageAccount from './Manage';
 
-    new Route('/examplepath/*', ExampleComponent);
-*/
+export {
+    Home,
+    About,
+    Contact,
 
-const Routes = [
-    new Route('/', Home)
-];
-
-export default Routes;
+    Login,
+    ManageAccount
+}

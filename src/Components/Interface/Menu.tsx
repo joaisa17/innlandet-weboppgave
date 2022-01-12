@@ -1,6 +1,11 @@
 import { FC, SetStateAction, Dispatch, Fragment } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { useAuth0 } from '@auth0/auth0-react';
+
+import LogoutButton from '@CommonComponents/LogoutButton';
+
+
 import Drawer from '@muim/Drawer';
 
 import Box from '@muim/Box';
@@ -16,13 +21,18 @@ import Divider from '@muim/Divider';
 import HomeIcon from '@muii/Home';
 import InfoIcon from '@muii/Info';
 import CloseIcon from '@muii/Close';
+import ContactPageIcon from '@muii/ContactPage';
+
+import LoginIcon from '@muii/Login';
+import AccountBoxIcon from '@muii/AccountBox';
 
 type ButtonArray = [string, JSX.Element, string];
 
 const buttonGroups: ButtonArray[][] = [
     [
         ['Hjem', <HomeIcon />, '/'],
-        ['Om Oss', <InfoIcon />, '/about']
+        ['Om Oss', <InfoIcon />, '/om-oss'],
+        ['Kontakt oss', <ContactPageIcon />, '/kontakt-oss']
     ]
 ];
 
@@ -33,6 +43,8 @@ interface Props {
 
 const Menu : FC<Props> = props => {
     
+    const { isAuthenticated, user } = useAuth0();
+
     const navigate = useNavigate();
 
     function goTo(path: string) {
@@ -61,10 +73,15 @@ const Menu : FC<Props> = props => {
                         </ListItem>)}
                     </List>
                 </Fragment>)}
+                <Divider />
                 <List>
-                    <ListItem button>
-
+                    {isAuthenticated ? <ListItem>Logget inn som: {user?.name}</ListItem> : null}
+                    <ListItem button onClick={() => goTo(isAuthenticated ? "/account/manage" : "/account/login")}>
+                        <ListItemIcon>{isAuthenticated ? <LoginIcon /> : <AccountBoxIcon />}</ListItemIcon>
+                        <ListItemText primary={isAuthenticated ? "Profil" : "Logg inn"} />
                     </ListItem>
+
+                    {isAuthenticated && <ListItem><LogoutButton /></ListItem>}
                 </List>
             </Box>
         </div>
